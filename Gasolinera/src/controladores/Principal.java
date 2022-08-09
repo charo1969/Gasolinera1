@@ -42,9 +42,7 @@ public class Principal {
 	
 	public void insertarRepostaje(Repostaje r) {
 		listaRepostaje.add(r);
-		fAlta.setVisible(false);
-		fListado.setListaRepostaje(listaRepostaje);
-		fListado.setVisible(true);
+		mostrarListado();
 	}
 	
 	// metodos de llamada mostrarAlta 
@@ -61,6 +59,13 @@ public class Principal {
 	}
 	
 	
+	public void mostrarListado() {
+		
+		fAlta.setVisible(false);
+		fListado.setListaRepostaje(listaRepostaje);
+		fListado.setVisible(true);
+		
+	}
 
 	public static void main(String[] args) {
 		
@@ -68,5 +73,6 @@ public class Principal {
 	
 
 	}
+
 
 }

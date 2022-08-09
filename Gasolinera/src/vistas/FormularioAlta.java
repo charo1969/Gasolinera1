@@ -43,6 +43,7 @@ public class FormularioAlta extends JFrame {
 	
 	// instancia de la clase principal
 	private Principal controlador;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -71,7 +72,8 @@ public class FormularioAlta extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[35.00][][347.00,grow][35.00px:n]", "[grow][grow][grow][grow][grow][grow][grow][grow][]"));
+		contentPane.setLayout(new MigLayout("", "[35.00][][347.00,grow][35.00px:n]", 
+				"[grow][grow][grow][grow][grow][grow][grow][grow][]"));
 		
 		JLabel lblNewLabel = new JLabel("Matr\u00EDcula:");
 		lblNewLabel.setFont(new Font("Verdana", Font.ITALIC, 14));
@@ -177,6 +179,15 @@ public class FormularioAlta extends JFrame {
 		});
 		
 		panel.add(btnAceptar);
+		
+		btnNewButton = new JButton("Mostrar listado");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.mostrarListado();
+			}
+		});
+		btnNewButton.setFont(new Font("Verdana", Font.PLAIN, 14));
+		panel.add(btnNewButton);
 	}
 	/**
 	 * Comprobaciones para validar los datos del formulario de alta de la gasolinera
@@ -241,7 +252,14 @@ public class FormularioAlta extends JFrame {
 			return;
 				
 		} 
+		//recoger los datos de los checkbox
 		r.setCombustible((Combustible) cboxCombustible.getSelectedItem());
+		
+		r.setAgrario(cbxAgrario.isSelected());
+		r.setbGobierno(cbxBonifGob.isSelected());
+		r.setSiVuelves(cbxPorTuVuelvas.isSelected());
+		controlador.insertarRepostaje(r);
+		
 		
 		// try catch para que los litros o el total esten rellenos.
 		try {
@@ -262,12 +280,6 @@ public class FormularioAlta extends JFrame {
 			return;
 		}
 		
-		
-		//recoger los datos de los checkbox
-		r.setAgrario(cbxAgrario.isSelected());
-		r.setbGobierno(cbxBonifGob.isSelected());
-		r.setSiVuelves(cbxPorTuVuelvas.isSelected());
-		controlador.insertarRepostaje(r);
 		
 	}
 		
