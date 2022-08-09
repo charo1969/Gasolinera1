@@ -74,5 +74,21 @@ public class Principal {
 
 	}
 
+	public void mostrarAlta(int fila) {
+		
+		fListado.setVisible(false);
+		fAlta.setListaCombustibles(listaCombustibles);
+		
+		Repostaje r = listaRepostaje.get(fila);
+		fAlta.setRepostaje(r);
+		fAlta.setVisible(true);
+	}
+
+	public void borrarRpostaje(Repostaje editar) {
+		listaRepostaje.remove(editar);
+		mostrarListado();
+		
+	}
+
 
 }

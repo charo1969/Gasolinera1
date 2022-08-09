@@ -28,6 +28,7 @@ public class ListadoVentas extends JFrame {
 	private JScrollPane scrollPane;
 	
 	private Principal controlador;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -95,6 +96,16 @@ public class ListadoVentas extends JFrame {
 		
 		btnVolver.setFont(new Font("Verdana", Font.PLAIN, 14));
 		panel.add(btnVolver);
+		
+		btnNewButton = new JButton("Editar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int fila = table.getSelectedRow();
+				controlador.mostrarAlta(fila);
+			}
+		});
+		btnNewButton.setFont(new Font("Verdana", Font.PLAIN, 14));
+		panel.add(btnNewButton);
 	}
 
 	public void setListaRepostaje(List<Repostaje> listaRepostaje) {

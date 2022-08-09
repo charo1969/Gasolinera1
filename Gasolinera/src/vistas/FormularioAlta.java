@@ -41,6 +41,8 @@ public class FormularioAlta extends JFrame {
 	private JCheckBox cbxBonifGob;
 	private JCheckBox cbxPorTuVuelvas;
 	
+	private Repostaje editar = null;
+	
 	// instancia de la clase principal
 	private Principal controlador;
 	private JButton btnNewButton;
@@ -252,13 +254,19 @@ public class FormularioAlta extends JFrame {
 			return;
 				
 		} 
+		if (editar != null) {
+			
+			controlador.borrarRpostaje(editar);
+		}else {
+			controlador.insertarRepostaje(r);
+		}
+		
 		//recoger los datos de los checkbox
 		r.setCombustible((Combustible) cboxCombustible.getSelectedItem());
 		
 		r.setAgrario(cbxAgrario.isSelected());
 		r.setbGobierno(cbxBonifGob.isSelected());
 		r.setSiVuelves(cbxPorTuVuelvas.isSelected());
-		controlador.insertarRepostaje(r);
 		
 		
 		// try catch para que los litros o el total esten rellenos.
@@ -309,6 +317,7 @@ public class FormularioAlta extends JFrame {
 	// limpiar datos
 	
 	public void limpiarFormulario() {
+		this.editar = null;
 		this.txtMatricula.setText("");
 		this.txtNombre.setText("");
 		this.txtDni.setText("");
@@ -318,6 +327,21 @@ public class FormularioAlta extends JFrame {
 		this.cbxAgrario.setSelected(false);
 		this.cbxBonifGob.setSelected(false);
 		this.cbxPorTuVuelvas.setSelected(false);
+		
+	}
+
+	public void setRepostaje(Repostaje r) {
+		this.editar = r;
+		this.txtMatricula.setText(r.getMatricula());
+		this.txtNombre.setText(r.getNombre());
+		this.txtDni.setText(r.getDni());
+		this.cboxCombustible.setSelectedItem(r.getCombustible());
+		this.txtLitros.setText("" + r.getLitros());
+		this.txtTotal.setText("" + r.getTotal());
+		this.cbxAgrario.setSelected(r.isAgrario());
+		this.cbxBonifGob.setSelected(r.isbGobierno());
+		this.cbxPorTuVuelvas.setSelected(r.isSiVuelves());
+		
 		
 	}
 	
