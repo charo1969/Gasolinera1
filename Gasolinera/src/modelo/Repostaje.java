@@ -20,7 +20,7 @@ public class Repostaje {
 	
 	// los constructores tanto con parámetros como sin parámetros
 	
-	public Repostaje(String matricula, String nombre, String dni, Combustible combustible, double litros, double total,
+	public Repostaje(String matricula, String nombre, String dni, Combustible combustible, double litros,
 			boolean agrario, boolean bGobierno, boolean siVuelves) {
 		super();
 		this.matricula = matricula;
@@ -28,7 +28,7 @@ public class Repostaje {
 		this.dni = dni;
 		this.combustible = combustible;
 		this.litros = litros;
-		this.total = total;
+		
 		this.agrario = agrario;
 		this.bGobierno = bGobierno;
 		this.siVuelves = siVuelves;

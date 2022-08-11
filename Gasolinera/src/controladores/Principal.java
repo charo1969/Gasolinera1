@@ -15,7 +15,7 @@ public class Principal {
 	
 	private ListadoVentas fListado;
 	
-	private List<Repostaje> listaRepostaje;
+	public List<Repostaje> listaRepostaje;
 
 	public Principal() {
 		
@@ -33,10 +33,7 @@ public class Principal {
 		listaCombustibles.add(new Combustible("Gasoil", 1.773));
 		listaCombustibles.add(new Combustible("Gasolina Plus", 1.832));
 		listaCombustibles.add(new Combustible("Gasoil Plus", 1.842));
-		
-		mostrarAlta();
-		
-		
+	
 	}
 	// metodo insertar a la lista un repostaje como parámetro
 	
@@ -70,6 +67,7 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		Principal ppa1 = new Principal();
+		ppa1.mostrarAlta();
 	
 
 	}
